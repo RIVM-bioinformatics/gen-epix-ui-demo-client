@@ -8,17 +8,21 @@
     "test-run": "vitest run --passWithNoTests",
     "lint": "eslint ./src --report-unused-disable-directives --max-warnings 0",
     "lint-fix": "eslint ./src --report-unused-disable-directives --max-warnings 0 --fix",
-    "check-types": "tsc --noemit"
+    "check-types": "tsc --noemit",
+    "start-oidc-mock-server": "nodemon --watch ./oidc-mock-server.config.json ./node_modules/.bin/oidc-mock-server"
   },
   "dependencies": {
-    "@gen-epix/ui": "0.0.5",
+    "@emotion/cache": "11.14.0",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.0",
+    "@gen-epix/ui": "1.1.0",
     "@mui/material": "7.1.1",
     "date-fns": "4.1.0",
     "i18next": "25.2.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-i18next": "15.5.2",
-    "react-router-dom": "7.6.1"
+    "react-router-dom": "7.6.2"
   },
   "devDependencies": {
     "@gen-epix/eslint-config": "0.0.3",
@@ -26,14 +30,15 @@
     "@gen-epix/generate-license-manifest": "0.0.1",
     "@gen-epix/oidc-mock-server": "0.0.1",
     "@types/react": "19.1.6",
-    "@types/react-dom": "19.1.5",
+    "@types/react-dom": "19.1.6",
     "@types/node": "22.15.29",
     "@vitejs/plugin-react-swc": "3.10.1",
     "eslint": "9.28.0",
+    "nodemon": "3.1.10",
     "typescript": "5.8.3",
     "vite": "6.3.5",
     "vite-plugin-svgr": "4.3.0",
-    "vitest": "3.2.0"
+    "vitest": "3.2.1"
   },
   "browserslist": [
     "last 2 Chrome versions"

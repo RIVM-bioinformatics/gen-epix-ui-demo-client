@@ -39,6 +39,20 @@ export default {
     // @ts-ignore
     svgr(),
   ],
+  resolve: {
+    alias: [
+      // All peer dependencies of @gen-epix/ui should be aliased to the local node_modules version
+      // This is to prevent issues with multiple versions of the same package
+      { find: '@emotion/cache', replacement: resolve('./node_modules/@emotion/cache') },
+      { find: '@emotion/react', replacement: resolve('./node_modules/@emotion/react') },
+      { find: '@emotion/styled', replacement: resolve('./node_modules/@emotion/styled') },
+      { find: 'i18next', replacement: resolve('./node_modules/i18next') },
+      { find: 'react-dom', replacement: resolve('./node_modules/react-dom') },
+      { find: 'react-i18next', replacement: resolve('./node_modules/react-i18next') },
+      { find: 'react', replacement: resolve('./node_modules/react') },
+      { find: 'react', replacement: resolve('./node_modules/react') },
+    ],
+  },
   build: {
     rollupOptions: {
       input: {

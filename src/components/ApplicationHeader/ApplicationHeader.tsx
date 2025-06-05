@@ -6,8 +6,8 @@ import {
 } from '@gen-epix/ui';
 import type { ApplicationHeaderProps } from '@gen-epix/ui';
 
-import LogoLarge from '../../assets/logo/logoipsum-large.svg?react';
-import LogoSmall from '../../assets/logo/logoipsum-small.png';
+import LogoLarge from '../../assets/logo/gen-epix-logo-large.svg?react';
+import LogoSmall from '../../assets/logo/gen-epix-logo-small.svg?react';
 
 export const ApplicationHeader = ({
   fullWidth,
@@ -25,11 +25,15 @@ export const ApplicationHeader = ({
     >
       {!fullHeight && (
         <Box sx={{
-          margin: '0 auto',
-          maxWidth: '300px',
+          height: '48px',
+          position: 'relative',
           '& svg': {
             width: '60%',
-            height: 'auto',
+            height: '48px',
+            position: 'absolute',
+            top: '0',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
           },
         }}
         >
@@ -41,12 +45,7 @@ export const ApplicationHeader = ({
         fullWidth={fullWidth}
         singleAction={singleAction}
         smallLogo={(
-          <Box
-            alt="Logo"
-            component="img"
-            src={LogoSmall}
-            sx={{ width: '100%', height: 'auto', marginTop: '8px' }}
-          />
+          <LogoSmall />
         )}
       />
     </Box>
