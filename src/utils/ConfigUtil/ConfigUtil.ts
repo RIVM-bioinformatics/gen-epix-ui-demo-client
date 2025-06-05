@@ -25,7 +25,7 @@ export class ConfigUtil {
     const PANEL_ZONES = [EPI_ZONE.EPI_CURVE, EPI_ZONE.LINE_LIST, EPI_ZONE.MAP, EPI_ZONE.TREE];
     const config: Config = {
       enablePageVents: true,
-      applicationName: 'LoremIpsum',
+      applicationName: 'Gen-EpiX',
       theme: createTheme('light'),
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ApplicationHeader,
