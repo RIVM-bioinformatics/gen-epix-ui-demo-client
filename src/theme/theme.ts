@@ -4,7 +4,10 @@ import type {
   Theme,
   ThemeOptions,
 } from '@mui/material';
-import { createTheme as muiCreateTheme } from '@mui/material';
+import {
+  lighten,
+  createTheme as muiCreateTheme,
+} from '@mui/material';
 
 import robotoFlexWoff2 from './fonts/RobotoFlex.woff2';
 import notoSansMonoWoff2 from './fonts/NotoSansMono.woff2';
@@ -158,6 +161,8 @@ export const createTheme = (paletteMode: PaletteMode): Theme => {
     epi: {
       tree: {
         font: 'bold 0.7rem "Noto Sans Mono"',
+        color: '#000',
+        dimFn: (color: string) => lighten(color, 0.8),
       },
       lineList: {
         font: '0.8rem "Noto Sans Mono"',

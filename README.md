@@ -1,15 +1,12 @@
-<p align="center">
-    <img src="./docs/assets/gen-epix_logo_full.svg" alt="gen-epix-logo" width=600>
-</p>
-
 # Gen-EpiX Demo Client
+
+![gen-epix-logo](./docs/assets/gen-epix_logo_full.svg)
 
 ## Installation
 
 ### Prerequisites
 
 Make sure you have node and npm installed.
-<br /><br />
 
 ### SSL installation
 
@@ -22,7 +19,6 @@ Goto your home directory (`~`) and run:
 `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1`
 
 Two files have now been created in your home directory `key.pem` and `cert.pem`. Copy these two files to the cert directory of this project.
-<br /><br />
 
 ### Client installation
 
@@ -33,7 +29,6 @@ This will install all dependencies, including @gen-epix/ui as the version specif
 run `npm install`
 
 If you wish the switch to `Variation B`, simply follow it's instructions.
-<br /><br />
 
 #### Variation B: Install with linked @gen-epix/ui
 
@@ -45,12 +40,10 @@ run `./installWithLinkedCore.sh`
 Note: You will have to run this every time dependencies have changed in `package.json`. Don't use `npm install`, it will unlink `@gen-epix/ui`.
 
 If you wish the switch to `Variation A`, simply follow it's instructions.
-<br /><br />
 
 ### OIDC Mock server installation (optional)
 
 Copy `oidc-mock-server.config.example.json` to `oidc-mock-server.config.json` and make changes in `oidc-mock-server.config.json`
-<br /><br />
 
 ## Running
 
@@ -70,10 +63,10 @@ run `npm start start-oidc-mock-server`
 
 run `npm start`
 
-# Funding
+## Funding
 
 This work was funded by the European Union under the EU4Health Programme (EU4H), project ID 101113520 (NLWGSHERA2).
 
-<img src="./docs/assets/cofunded_EU_logo.png" alt="cofunded-EU-logo" width=400>
+![cofunded-EU-logo](./docs/assets/cofunded_EU_logo.png)
 
 *Disclaimer: Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or Health and Digital Executive Agency. Neither the European Union nor the granting authority can be held responsible for them.*
