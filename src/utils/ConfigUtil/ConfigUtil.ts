@@ -134,7 +134,7 @@ export class ConfigUtil {
       getTouchIconUrl: () => {
         return '/touch-icon.png';
       },
-      getEnvironmentMessage: (t) => {
+      getEnvironmentMessage: (_t) => {
         const { location: { href } } = WindowManager.instance.window.document;
         const { hostname } = new URL(href);
         let environment = '';
@@ -145,7 +145,7 @@ export class ConfigUtil {
             environment = 'localhost';
             break;
         }
-        return t('{{environment}} environment', { environment });
+        return environment;
       },
       trends: {
         homePage: {
