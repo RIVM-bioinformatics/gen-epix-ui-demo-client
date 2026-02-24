@@ -7,6 +7,7 @@ import {
   WindowManager,
   EPI_ZONE,
   ColType,
+  I18nManager,
 } from '@gen-epix/ui';
 import type {
   Config,
@@ -14,23 +15,102 @@ import type {
 } from '@gen-epix/ui';
 
 import { createTheme } from '../../theme';
-import { ApplicationFooter } from '../../components/ApplicationFooter';
 import { ApplicationHeader } from '../../components/ApplicationHeader';
 import { ConsentDialogContent } from '../../components/ConsentDialogContent';
 import { HomePageIntroduction } from '../../components/HomePageIntroduction';
 import { LicenseInformation } from '../../components/LicenseInformation';
 
+const LOCAL_STORAGE_KEY_PREFERRED_LANGUAGE = 'GenEpix-preferred-language';
+
 export class ConfigUtil {
   public static createConfig(): Config {
+    const onEnglishClick = async () => {
+      await I18nManager.instance.switchLanguage('en');
+    };
+
+    const onDutchClick = async () => {
+      await I18nManager.instance.switchLanguage('nl');
+    };
+
+    const setNewLanguageCode = async (code: string) => {
+      return Promise.resolve(WindowManager.instance.window.localStorage.setItem(LOCAL_STORAGE_KEY_PREFERRED_LANGUAGE, code));
+    };
+
+    const getCurrentLanguageCode = async () => {
+      return Promise.resolve(WindowManager.instance.window.localStorage.getItem(LOCAL_STORAGE_KEY_PREFERRED_LANGUAGE) ?? window.navigator.language.split('-')[0] ?? 'en');
+    };
+
+
     const PANEL_ZONES = [EPI_ZONE.EPI_CURVE, EPI_ZONE.LINE_LIST, EPI_ZONE.MAP, EPI_ZONE.TREE];
     const config: Config = {
-      enablePageVents: true,
+      i18n: {
+        setNewLanguageCode,
+        getCurrentLanguageCode,
+        languages: [
+          {
+            code: 'en',
+            bundles: [
+              '/locale/en.json',
+              '/locale/gen-epix-ui/en.json',
+            ],
+          },
+          {
+            code: 'nl',
+            bundles: [
+              '/locale/nl.json',
+              '/locale/gen-epix-ui/nl.json',
+            ],
+          },
+        ],
+      },
+      footer: {
+        sections: [
+          {
+            header: 'Contact',
+            items: [
+              {
+                href: 'mailto:ids-bioinformatics@rivm.nl',
+                label: 'ids-bioinformatics@rivm.nl',
+              },
+              {
+                href: 'https://github.com/RIVM-bioinformatics/gen-epix',
+                label: 'Information for the press',
+              },
+            ],
+          },
+          {
+            header: 'About',
+            items: [
+              {
+                href: 'https://github.com/RIVM-bioinformatics/gen-epix',
+                label: 'Copyright',
+              },
+              {
+                href: 'https://github.com/RIVM-bioinformatics/gen-epix',
+                label: 'Accessibility',
+              },
+            ],
+          },
+          {
+            header: 'Languages',
+            items: [
+              {
+                label: 'English',
+                onClick: onEnglishClick,
+              },
+              {
+                label: 'Dutch',
+                onClick: onDutchClick,
+              },
+            ],
+          },
+        ],
+      },
+      enablePageEvents: true,
       applicationName: 'Gen-EpiX',
       theme: createTheme('light'),
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ApplicationHeader,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      ApplicationFooter,
       // eslint-disable-next-line @typescript-eslint/naming-convention
       HomePageIntroduction,
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -95,6 +175,7 @@ export class ConfigUtil {
         DATA_MISSING_CHARACTER: '·',
         INITIAL_NUM_VISIBLE_ATTRIBUTES_IN_CASE_SUMMARY: 5,
         STRATIFICATION_COLORS: ['#3f51b5', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc', '#24348f', '#c7243a', '#5e8548', '#de7d49', '#85503d', '#45393c', '#2a89bd', '#c2c28a', '#dbc7bc', '#858c81', '#a66a2e', '#853867', '#544b4b', '#00755e', '#2d3770', '#8fa9b3', '#293d2a', '#ad9c82', '#b0846f', '#b2e8ff', '#481452', '#18031a', '#b8aab8', '#18c8f0', '#99ad8e', '#806473', '#1f2330', '#30111f'],
+        DOWNLOAD_SECTION_ORDER: [EPI_ZONE.LINE_LIST, EPI_ZONE.TREE, EPI_ZONE.EPI_CURVE, EPI_ZONE.MAP],
       },
       epiMap: {
         MIN_PIE_CHART_RADIUS: 4,
@@ -118,7 +199,7 @@ export class ConfigUtil {
         MAX_ZOOM_SPEED: 0.25,
         TAKING_LONGER_TIMEOUT_MS: 10000,
       },
-      epiList: {
+      epiLineList: {
         TABLE_ROW_HEIGHT: 24,
         MAX_COLUMN_WIDTH: 400,
         REQUIRED_EXTRA_CELL_PADDING_TO_FIT_CONTENT: 36,

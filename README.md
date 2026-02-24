@@ -35,7 +35,7 @@ If you wish the switch to `Variation B`, simply follow it's instructions.
 This will install all dependencies, including @gen-epix/ui symlinked in `node_modules`.
 
 checkout gen-epix-ui at `../gen-epix-ui`
-run `./installWithLinkedCore.sh`
+run `./installLinked.sh`
 
 Note: You will have to run this every time dependencies have changed in `package.json`. Don't use `npm install`, it will unlink `@gen-epix/ui`.
 
@@ -57,7 +57,7 @@ Follow these steps:
 
 ### Running the OIDC mock server
 
-run `npm start start-oidc-mock-server`
+run `npm run start-oidc-mock-server`
 
 ### Running the Demo Client
 

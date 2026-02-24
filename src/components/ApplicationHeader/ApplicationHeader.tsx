@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import {
   TestIdUtil,
@@ -7,46 +8,43 @@ import {
 import type { ApplicationHeaderProps } from '@gen-epix/ui';
 
 import LogoLarge from '../../assets/logo/gen-epix-logo-large.svg?react';
-import LogoSmall from '../../assets/logo/gen-epix-logo-small.svg?react';
 
 export const ApplicationHeader = ({
   fullWidth,
   fullHeight,
   singleAction,
 }: ApplicationHeaderProps) => {
+  const [t] = useTranslation();
 
   return (
     <Box
       {...TestIdUtil.createAttributes('ApplicationHeader')}
       sx={{
-        zIndex: 2,
+        zIndex: 3,
         position: 'relative',
       }}
     >
       {!fullHeight && (
-        <Box sx={{
-          height: '48px',
-          position: 'relative',
-          '& svg': {
-            width: '60%',
-            height: '48px',
-            position: 'absolute',
-            top: '0',
-            left: '50%',
-            transform: 'translate(-50%, 0)',
-          },
-        }}
+        <Box
+          sx={{
+            maxHeight: '100px',
+            height: '100px',
+            display: 'flex',
+            justifyContent: 'center',
+            '& svg': {
+              height: '100%',
+              maxHeight: '100%',
+              width: 'auto',
+            },
+          }}
         >
-          <LogoLarge />
+          <LogoLarge aria-label={t`Logo`} />
         </Box>
       )}
       <ApplicationBar
         fullHeight={fullHeight}
         fullWidth={fullWidth}
         singleAction={singleAction}
-        smallLogo={(
-          <LogoSmall />
-        )}
       />
     </Box>
   );

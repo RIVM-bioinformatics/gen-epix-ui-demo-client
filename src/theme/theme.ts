@@ -158,7 +158,7 @@ export const createTheme = (paletteMode: PaletteMode): Theme => {
 
   const themeOptions: ThemeOptions = {
     ...(process.env.NODE_ENV === 'test' && { transitions: { create: () => 'none' } }),
-    epi: {
+    'gen-epix': {
       tree: {
         font: 'bold 0.7rem "Noto Sans Mono"',
         color: '#000',
@@ -166,6 +166,19 @@ export const createTheme = (paletteMode: PaletteMode): Theme => {
       },
       lineList: {
         font: '0.8rem "Noto Sans Mono"',
+      },
+      navbar: {
+        background: '#154273',
+        primaryColor: '#fff',
+        secondaryColor: '#ddeff8',
+        activeBackground: '#fff',
+        activeColor: '#154273',
+        environmentMessageColor: '#ffea00',
+      },
+      footer: {
+        background: '#154273',
+        color: '#fff',
+        sectionBorderColor: '#fff',
       },
     },
     spacing: 8,
@@ -202,31 +215,6 @@ export const createTheme = (paletteMode: PaletteMode): Theme => {
           root: {
             fontWeight: 'bold',
           },
-        },
-      },
-      MuiTextField: {
-        defaultProps: {
-          variant: 'filled',
-          size: 'small',
-          fullWidth: true,
-        },
-      },
-      MuiAutocomplete: {
-        defaultProps: {
-          size: 'small',
-          fullWidth: true,
-        },
-      },
-      MuiToggleButtonGroup: {
-        defaultProps: {
-          size: 'small',
-        },
-      },
-      MuiFormControl: {
-        defaultProps: {
-          variant: 'filled',
-          size: 'small',
-          fullWidth: true,
         },
       },
       MuiAlertTitle: {
@@ -295,6 +283,23 @@ export const createTheme = (paletteMode: PaletteMode): Theme => {
           },
           input: {
             color: '#282245',
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            padding: '9px',
+            '& input': {
+              padding: '7.5px 4px 7.5px 5px',
+            },
+          },
+        },
+      },
+      MuiSelect: {
+        styleOverrides: {
+          select: {
+            padding: '7.5px 32px 7.5px 5px',
           },
         },
       },
