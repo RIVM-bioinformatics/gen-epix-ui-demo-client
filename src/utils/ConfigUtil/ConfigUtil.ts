@@ -73,7 +73,7 @@ export class ConfigUtil {
                 label: 'ids-bioinformatics@rivm.nl',
               },
               {
-                href: 'https://github.com/RIVM-bioinformatics/gen-epix',
+                href: 'https://github.com/RIVM-bioinformatics/gen-epix-api',
                 label: 'Information for the press',
               },
             ],
@@ -82,11 +82,11 @@ export class ConfigUtil {
             header: 'About',
             items: [
               {
-                href: 'https://github.com/RIVM-bioinformatics/gen-epix',
+                href: 'https://github.com/RIVM-bioinformatics/gen-epix-api',
                 label: 'Copyright',
               },
               {
-                href: 'https://github.com/RIVM-bioinformatics/gen-epix',
+                href: 'https://github.com/RIVM-bioinformatics/gen-epix-api',
                 label: 'Accessibility',
               },
             ],
